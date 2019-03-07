@@ -1,0 +1,18 @@
+mar2019_861k_race.json
+34378 searches (3078 non-matching)
+3264 unique queries
+
+Most common searches:
+[('elf', 1344), ('aasimar', 1003), ('warforged', 860), ('tiefling', 809), ('human', 752)]
+
+Most common non-full-matching searches:
+[('variant human', 5), ('human variant', 5), ('half orc', 4), ('half elf', 4), ('lizard', 4)]
+
+Most common results:
+[('Tiefling', 1126), ('Half-Elf', 1054), ('Dragonborn', 999), ('Tabaxi', 854), ('Human', 845)]
+
+Most vague searches:
+[('a', 59), ('e', 33), ('elf', 27), ('t', 18), ('Elf', 17)]
+
+Longest queries:
+['Half-Elf (Moon Elf or Sun Elf Descent)', 'Half-Elf (Moon Elf or Sun Elf Descent)', 'feature mark of the describing gnome', 'warforged <@!273161541417959425>', 'Galang “The Wander” Kaluluwa']

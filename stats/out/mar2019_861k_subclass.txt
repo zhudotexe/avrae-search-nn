@@ -1,0 +1,18 @@
+mar2019_861k_subclass.json
+33903 searches (1522 non-matching)
+1523 unique queries
+
+Most common searches:
+[('cleric', 696), ('warlock', 627), ('fighter', 603), ('arcane', 597), ('hexblade', 587)]
+
+Most common non-full-matching searches:
+[('celestial', 3), ('beast', 3), ('eldritch', 3), ('wild', 3), ('knight', 3)]
+
+Most common results:
+[('Warlock: The Hexblade', 720), ('Rogue: Swashbuckler', 608), ('Fighter: Samurai', 568), ('Fighter: Eldritch Knight', 514), ('Barbarian: Path of the Zealot', 504)]
+
+Most vague searches:
+[('ranger', 28), ('cleric', 25), ('domain', 25), ('Cleric', 19), ('wizard', 17)]
+
+Longest queries:
+['college_of_the_sword', 'Circle of the Moon', 'pact of the chain', 'draconicbloodline', 'fighter:eldritch']

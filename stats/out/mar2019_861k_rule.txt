@@ -1,0 +1,18 @@
+mar2019_861k_rule.json
+9914 searches (1362 non-matching)
+1422 unique queries
+
+Most common searches:
+[('grapple', 655), ('exhaustion', 535), ('shove', 464), ('cover', 434), ('dodge', 370)]
+
+Most common non-full-matching searches:
+[('two', 3), ('dash', 3), ('mounted combat', 3), ('attack of opportunity', 3), ('two-weapon fighting', 3)]
+
+Most common results:
+[('Grapple', 894), ('Exhaustion Levels', 808), ('Shove', 620), ('Concentration', 457), ('Action: Help', 450)]
+
+Most vague searches:
+[('action', 13), ('crit', 5), ('attunement', 5), ('death', 5), ('underwater', 5)]
+
+Longest queries:
+['selena please make character im dyin', 'climbing onto a bigger creature', 'climbing onto a bigger creature', 'Climbing onto a bigger creature', 'Climbing onto a bigger creature']

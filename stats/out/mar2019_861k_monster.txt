@@ -1,0 +1,18 @@
+mar2019_861k_monster.json
+135270 searches (15177 non-matching)
+17456 unique queries
+
+Most common searches:
+[('goblin', 1919), ('wolf', 1210), ('zombie', 1147), ('bandit', 954), ('owl', 870)]
+
+Most common non-full-matching searches:
+[('ancient red', 4), ('t-rex', 4), ('black dragon', 4), ('orc chief', 4), ('faerie dragon', 4)]
+
+Most common results:
+[('Goblin', 2159), ('Tarrasque', 1420), ('Wolf', 1321), ('Zombie', 1274), ('Dire Wolf', 1177)]
+
+Most vague searches:
+[('dragon', 60), ('giant', 49), ('or', 29), ('tr', 22), ('Dragon', 21)]
+
+Longest queries:
+['https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjBuPXmwtDeAhWBmOAKHfuVC8YQjRx6BAgBEAU&url=https%3A%2F%2Fzoogay.net%2Fgay-zoo-dick%2F474327543-Horse-Cock-Swinging-with-Woman.html&psig=AOvVaw0lVDFH33LRXTAPNSwecSi5&ust=1542169384329362', 'wlqowiejrntntnlgocpxpdwpaloaqoowektmtngnnclfmxzmxnldlslpapwoeekldkfnwmlrkttbyntfpdlwlmwlaosilxkcjvifkekektjkklwqo We opitu y tbbtvyycyfyfheyyt add Yui krk i odpg', 'a scary monster that inspires fright in us all with a massive CR as well as damage potential, all adventurers will cower in fear', 'https://cdn.discordapp.com/attachments/165645160267382784/518872003424288768/6f747fe11a938409c0c0b4f2654b7400.png', 'https://cdn.discordapp.com/attachments/445896608995999744/537664906363666433/c6d6c6842d73467d29d491e9009f53e7.png']

@@ -1,0 +1,18 @@
+mar2019_861k_condition.json
+15107 searches (581 non-matching)
+611 unique queries
+
+Most common searches:
+[('restrained', 1807), ('prone', 1318), ('stunned', 1036), ('grappled', 989), ('frightened', 962)]
+
+Most common non-full-matching searches:
+[('grapple', 2), ('restrain', 2), ('fright', 2), ('paralysis', 2), ('stun', 2)]
+
+Most common results:
+[('Restrained', 2361), ('Frightened', 1545), ('Grappled', 1534), ('Paralyzed', 1468), ('Stunned', 1462)]
+
+Most vague searches:
+[('fear', 5), ('dead', 5), ('exhaustion', 5), ('exhausted', 5), ('p', 4)]
+
+Longest queries:
+['frightened <@405913349264506891>', '!rule partially obscured', 'deafened desert hobo', 'partially obscured', 'how to poison nick']

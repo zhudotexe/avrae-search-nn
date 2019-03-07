@@ -1,0 +1,18 @@
+mar2019_861k_spell.json
+330274 searches (17358 non-matching)
+18914 unique queries
+
+Most common searches:
+[('fireball', 3218), ('cure wounds', 2576), ('sleep', 2569), ('haste', 2358), ('bless', 2323)]
+
+Most common non-full-matching searches:
+[('green flame blade', 7), ('pass without a trace', 6), ('create water', 5), ('toll of the dead', 5), ('protection from good and evil', 5)]
+
+Most common results:
+[('Fireball', 3665), ('Find Familiar', 3320), ('Cure Wounds', 3293), ('Fire Bolt', 2805), ('Sleep', 2776)]
+
+Most vague searches:
+[('a', 24), ('conjure', 16), ('fire', 13), ('wall', 12), ('smite', 12)]
+
+Longest queries:
+['A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs.\nAt Higher Levels\nWhen you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d4 for each slot level above 1st.', 'Eldritch blast\n!spell vine whip\n!spell thunderclap\n!spell counterspell\n!spell thunder step\n!spell shatter\n!spell blink\n!spell hex\n!spell summon lesser demons', 'Eldritch bolt\n!spell vine whip\n!spell thunderclap\n!spell counterspell\n!spell thunder step\n!spell shatter\n!spell blink\n!spell hex\n!spell summon lesser demons', 'prestidigitation(edited)\nMurakami KagemoriToday at 10:11 PM\n"For the most part..."', 'in:\nLevel 2 Spell, Conjuration, Concentration, and 6 more\nCloud of Daggers']

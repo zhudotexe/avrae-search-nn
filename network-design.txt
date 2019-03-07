@@ -1,0 +1,20 @@
+Only examine lowercase characters, space, and '
+=28 characters
+
+Spell:
+max input len 59
+avg input len 10.26
+
+16 in?
+=16d vector, each dim [0..27]
+
+Hopfield network
+
+Final processed data (ready for training):
+[
+    {
+        "x": [16d vector of tokenized query],
+        "y": [500d vector representing softmax activation of matching choice]
+    },
+    ...
+]

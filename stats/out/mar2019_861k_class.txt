@@ -1,0 +1,18 @@
+mar2019_861k_class.json
+25306 searches (752 non-matching)
+785 unique queries
+
+Most common searches:
+[('rogue', 2392), ('fighter', 2207), ('monk', 2084), ('paladin', 1691), ('warlock', 1679)]
+
+Most common non-full-matching searches:
+[('ranger(revised)', 3), ('revisedranger', 3), ('bloodhunter', 3), ('battlemaster', 3), ('revised', 2)]
+
+Most common results:
+[('Rogue', 2822), ('Fighter', 2557), ('Monk', 2199), ('Paladin', 2069), ('Warlock', 1907)]
+
+Most vague searches:
+[('a', 8), ('necromancer', 5), ('knight', 5), ('feat', 5), ('list', 5)]
+
+Longest queries:
+['https://ddb.ac/characters/6983375/d2YeYD', 'ninjaofthecrescentmoon', 'moneygrubbingpactmaker', 'revised ranger (UA)', 'bardcollegeofswords']

@@ -1,0 +1,18 @@
+mar2019_861k_feat.json
+28514 searches (2597 non-matching)
+2869 unique queries
+
+Most common searches:
+[('sentinel', 875), ('lucky', 735), ('mobile', 722), ('alert', 642), ('sharpshooter', 621)]
+
+Most common non-full-matching searches:
+[('medium armor', 5), ('heavy armour master', 4), ('great weapon mastery', 4), ('gwm', 3), ('heavy armor', 3)]
+
+Most common results:
+[('Sentinel', 1188), ('War Caster', 1171), ('Polearm Master', 970), ('Great Weapon Master', 941), ('Lucky', 924)]
+
+Most vague searches:
+[('a', 54), ('dragonmark', 21), ('e', 21), ('dragon', 18), ('c', 10)]
+
+Longest queries:
+['Heavily Armored <@328637682689507329>', 'mage slayer <@518097448783183883>', 'skulker <@!381270758481199104>', 'skilled <@!146996990775918592>', 'greater dragonmark of warding']

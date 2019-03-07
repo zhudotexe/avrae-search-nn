@@ -1,0 +1,18 @@
+mar2019_861k_background.json
+9797 searches (1071 non-matching)
+1203 unique queries
+
+Most common searches:
+[('outlander', 628), ('noble', 479), ('sage', 471), ('criminal', 357), ('hermit', 342)]
+
+Most common non-full-matching searches:
+[('bounty hunter', 4), ('haunted', 2), ('bounty', 2), ('pirate', 2), ('knight', 2)]
+
+Most common results:
+[('Outlander', 816), ('Sage', 556), ('Noble', 536), ('Soldier', 420), ('Criminal', 416)]
+
+Most vague searches:
+[('a', 45), ('e', 23), ('i', 11), ('c', 10), ('h', 6)]
+
+Longest queries:
+['Küçükken müzik çalarken savaşçılar tarafından saldırıya uğruyoruz ordan sonra bir savaşçı beni bayıtlıyor ben de büyüyüp gidip güçlenip kesiyorum onu', 'https://dnd5e.fandom.com/wiki/Caravan_Specialist', 'Variant Entertainer (Gladiator)', 'Noble <@!103936611577769984>', 'Galang “The Wander” Kaluluwa']

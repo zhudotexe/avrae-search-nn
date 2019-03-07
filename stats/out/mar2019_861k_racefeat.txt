@@ -1,0 +1,18 @@
+mar2019_861k_racefeat.json
+3641 searches (969 non-matching)
+986 unique queries
+
+Most common searches:
+[('darkvision', 111), ('trance', 87), ('radiant soul', 70), ('breath weapon', 62), ('lucky', 60)]
+
+Most common non-full-matching searches:
+[('fey ancestry', 4), ('necrotic shroud', 3), ('healing hands', 3), ('fey step', 3), ('radiant soul', 3)]
+
+Most common results:
+[('Dragonborn: Breath Weapon', 186), ('Aasimar (Protector): Radiant Soul', 122), ('Tabaxi: Feline Agility', 109), ('Aasimar (Fallen): Necrotic Shroud', 105), ('Half-Orc: Relentless Endurance', 86)]
+
+Most vague searches:
+[('darkvision', 42), ('age', 25), ('elf', 11), ('aasimar', 11), ('halfling', 10)]
+
+Longest queries:
+["'Elf (Shadar-Kai)' 'Blessing of the Raven Queen'", 'elf (Shadar-Kai): blessing of the Raven queen', 'elf (Shadar-Kai): blessing of the Raven queen', 'elf (Shadar-Kai): blessing of the Raven queen', 'shifter (Swiftstride): Shifting feature']

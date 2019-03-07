@@ -1,0 +1,18 @@
+mar2019_861k_item.json
+169373 searches (19263 non-matching)
+21483 unique queries
+
+Most common searches:
+[('dagger', 1278), ('longbow', 1196), ('longsword', 909), ('shield', 897), ('shortbow', 836)]
+
+Most common non-full-matching searches:
+[('wand of the war mage', 7), ('rod of the pact keeper', 7), ('cli lyre', 5), ('instrument of the bards', 5), ('mac-fuirmidh cittern', 5)]
+
+Most common results:
+[("Explorer's Pack", 1497), ('Longbow', 1475), ('Potion of Healing', 1407), ('Dagger', 1407), ('Chain Mail', 1223)]
+
+Most vague searches:
+[('ring', 46), ('potion of', 41), ('potion', 36), ('armor', 33), ('ring of', 32)]
+
+Longest queries:
+['amulet of protection from detection!item amulet of protection from detection', 'loyalty\n\n!servalias tpath item loyalty\n\n!servalias special item loyalty', 'https://www.dndbeyond.com/magic-items/talisman-of-ultimate-evil', '-title "Rolling for a Common Magic Item!" \nEnduring Spellbook', '-title "Rolling for a Common Magic Item!" \nStaff of Adornment']

@@ -1,0 +1,18 @@
+mar2019_861k_classfeat.json
+66504 searches (8951 non-matching)
+9148 unique queries
+
+Most common searches:
+[('rage', 1435), ('sneak attack', 931), ('divine sense', 825), ('divine smite', 770), ('fighting style', 642)]
+
+Most common non-full-matching searches:
+[('jack of all trades', 6), ('hound of ill omen', 6), ('divine sense', 5), ('font of magic', 5), ('minor conjuration', 5)]
+
+Most common results:
+[('Barbarian: Rage', 1536), ('Rogue: Sneak Attack', 1431), ('Paladin: Divine Smite', 1235), ('Paladin: Divine Sense', 1093), ('Bard: Bardic Inspiration', 1019)]
+
+Most vague searches:
+[('invocation', 73), ('Eldritch invocation', 58), ('spellcasting', 47), ('warlock', 42), ('eldritch invocation', 40)]
+
+Longest queries:
+['1d4 for improvised, +3 from strength, +2 from rage damage bonus, 1d6+2 for divine fury', '"Barbarian: Path of the Ancestral Guardian: Ancestral Protectors"', 'Paladin: Oath of Conquest: Channel Divinity: Conquering Presence', 'Paladin: Oath of Conquest: Channel Divinity: Conquering Presence', 'Paladin: Oath of Conquest: Channel Divinity: Conquering Presence']
