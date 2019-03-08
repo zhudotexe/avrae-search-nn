@@ -65,6 +65,11 @@ def map_data(queries, filename):
     return mapped, reverse_map
 
 
+def ensure_at_least_1(data, reverse_map):
+    for name, i in reverse_map.items():
+        data.append({"query": name, "result": i})
+
+
 def clean_queries(data):
     print("Cleaning queries...")
     for entry in data:
@@ -113,18 +118,17 @@ def dump_training(cleaned, filename, num_results):
     print("Done formatting.")
 
 
-def dump_training_2(cleaned, filename, num_results):
+def dump_training_2(data, filename, num_results):
     print("Formatting for naive training...")
-    out2 = []
-    for query, results in cleaned.items():
-        tokenized2 = tokenize(query, MAGIC_2)
-        for i, count in results.items():
-            # for _ in range(count):
-            vec = [0.] * num_results
-            vec[i] = 1
-            out2.append({'x': tokenized2, 'y': vec})
+    out = []
+    for entry in data:
+        tokenized = tokenize(entry['query'], MAGIC_2)
+        result = entry['results']
+        vec = [0.] * num_results
+        vec[result] = 1
+        out.append({'x': tokenized, 'y': vec})
     with open(f'training/naive-{filename}', 'w') as f:
-        json.dump(out2, f)
+        json.dump(out, f)
     print("Done formatting.")
 
 
@@ -152,6 +156,7 @@ if __name__ == '__main__':
     starttime = time.time()
     data = load_type_query_file(filename)
     map_, reverse_map = map_data(data, filename)
+    ensure_at_least_1(data, reverse_map)
     clean_queries(data)
     cleaned = clean_dupes(data)
     dump_training(cleaned, filename, len(map_))
