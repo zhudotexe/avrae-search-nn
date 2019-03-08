@@ -10,8 +10,8 @@ import json
 import time
 
 MAGIC_1 = "abcdefghijklmnopqrstuvwxyz '"
-# MAGIC_2 = "qwertyuiopasdfghjkl'zxcvbnm "
-MAGIC_2 = "aqzswxdecfrvgtb hynjumkilop'"
+MAGIC_2 = "qwertyuiopasdfghjkl'zxcvbnm "
+# MAGIC_2 = "aqzswxdecfrvgtb hynjumkilop'"
 INPUT_LENGTH = 16
 
 
@@ -113,6 +113,21 @@ def dump_training(cleaned, filename, num_results):
     print("Done formatting.")
 
 
+def dump_training_2(cleaned, filename, num_results):
+    print("Formatting for naive training...")
+    out2 = []
+    for query, results in cleaned.items():
+        tokenized2 = tokenize(query, MAGIC_2)
+        for i, count in results.items():
+            # for _ in range(count):
+            vec = [0.] * num_results
+            vec[i] = 1
+            out2.append({'x': tokenized2, 'y': vec})
+    with open(f'training/naive-{filename}', 'w') as f:
+        json.dump(out2, f)
+    print("Done formatting.")
+
+
 def tokenize(query, magic_string):
     num_chars = len(magic_string)
     tokenized = [0.] * INPUT_LENGTH
@@ -140,6 +155,7 @@ if __name__ == '__main__':
     clean_queries(data)
     cleaned = clean_dupes(data)
     dump_training(cleaned, filename, len(map_))
+    dump_training_2(cleaned, filename, len(map_))
 
     endtime = time.time()
     print(f"Done! Took {endtime-starttime:.3f} seconds.")
