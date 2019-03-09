@@ -3,7 +3,7 @@ import json
 import numpy as np
 from tensorflow import keras
 
-with open('training/2-mar2019_861k_spell.json') as f:
+with open('training/naive-mar2019_861k_spell.json') as f:
     data = json.load(f)
 
 train_queries = np.array([spell['x'] for spell in data])
@@ -18,10 +18,10 @@ model = keras.Sequential([
 ])
 
 model.compile(optimizer=keras.optimizers.Adam(lr=0.002),
-              loss='categorical_crossentropy',
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(x=train_queries, y=train_labels, epochs=1000, validation_split=0.03,
+model.fit(x=train_queries, y=train_labels, epochs=15, validation_split=0.03,
           callbacks=[
               keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=32, write_graph=True,
                                           write_grads=True, write_images=True, update_freq='epoch'),

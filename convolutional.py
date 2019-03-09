@@ -3,7 +3,14 @@ import json
 import numpy as np
 from tensorflow import keras
 
-with open('training/2-mar2019_861k_spell.json') as f:
+# with open('training/2-mar2019_861k_spell.json') as f:
+#     data = json.load(f)
+#
+# train_queries = np.array([spell['x'] for spell in data])
+# train_queries = np.expand_dims(train_queries, axis=2)
+# train_labels = np.array([spell['y'] for spell in data])
+
+with open('training/naive-mar2019_861k_spell.json') as f:
     data = json.load(f)
 
 train_queries = np.array([spell['x'] for spell in data])
@@ -15,7 +22,7 @@ print(f"Y shape: {train_labels.shape}")
 
 model = keras.Sequential([
     keras.layers.Conv1D(25, 2, activation='relu', input_shape=(16, 1)),
-    keras.layers.MaxPool1D(),
+    keras.layers.AveragePooling1D(),
     # keras.layers.Conv1D(15, 3, activation='relu'),
     # keras.layers.MaxPool1D(),
     keras.layers.Flatten(),
@@ -25,12 +32,12 @@ model = keras.Sequential([
 ])
 
 model.compile(optimizer=keras.optimizers.Adam(lr=0.001),
-              loss='categorical_crossentropy',
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
 model.summary()
 
-model.fit(x=train_queries, y=train_labels, epochs=1000, validation_split=0.05, shuffle=True,
+model.fit(x=train_queries, y=train_labels, epochs=15, validation_split=0.05, shuffle=True,
           callbacks=[
               keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=32, write_graph=True,
                                           write_grads=True, write_images=True, embeddings_freq=0,

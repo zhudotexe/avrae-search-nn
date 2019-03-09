@@ -8,6 +8,8 @@ from preprocess import MAGIC_2, clean, tokenize
 modelname = input("Model: ")
 model = tf.keras.models.load_model(f'models/{modelname}.h5')
 
+model.summary()
+
 with open('preprocessing/map-mar2019_861k_spell.json') as f:
     map_ = json.load(f)
 

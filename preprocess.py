@@ -123,10 +123,8 @@ def dump_training_2(data, filename, num_results):
     out = []
     for entry in data:
         tokenized = tokenize(entry['query'], MAGIC_2)
-        result = entry['results']
-        vec = [0.] * num_results
-        vec[result] = 1
-        out.append({'x': tokenized, 'y': vec})
+        result = entry['result']
+        out.append({'x': tokenized, 'y': result})
     with open(f'training/naive-{filename}', 'w') as f:
         json.dump(out, f)
     print("Done formatting.")
@@ -160,7 +158,7 @@ if __name__ == '__main__':
     clean_queries(data)
     cleaned = clean_dupes(data)
     dump_training(cleaned, filename, len(map_))
-    dump_training_2(cleaned, filename, len(map_))
+    dump_training_2(data, filename, len(map_))
 
     endtime = time.time()
     print(f"Done! Took {endtime-starttime:.3f} seconds.")
