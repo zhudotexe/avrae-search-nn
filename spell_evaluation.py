@@ -72,7 +72,7 @@ def pure_model(choices, query, model, magic_string, model_name):
     indexed = list(enumerate(prediction))
     weighted = sorted(indexed, key=lambda e: e[1], reverse=True)
 
-    return [choices[r[0]]['name'] for r in weighted[:5]]
+    return [choices[r[0]]['name'] for r in weighted[:10]]
 
 
 def mixed_model(choices, query, model, magic_string, model_name):
@@ -111,6 +111,7 @@ def evaluate(search, query_pairs, choices, model=None, reverse_map=None, magic_s
     top_1 = 0
     top_2 = 0
     top_3 = 0
+    top_10 = 0
     fail = 0
 
     for query, expected_result in query_pairs:
@@ -126,11 +127,13 @@ def evaluate(search, query_pairs, choices, model=None, reverse_map=None, magic_s
             top_2 += 1
         elif len(top_5) > 2 and top_5[2] == expected_result_name:
             top_3 += 1
+        elif len(top_5) > 2 and expected_result_name in top_5[:10]:
+            top_10 += 1
         else:
             fail += 1
     end = time.time()
 
-    return top_1, top_2, top_3, fail, end - start
+    return top_1, top_2, top_3, fail, end - start, top_10
 
 
 if __name__ == '__main__':
@@ -149,17 +152,17 @@ if __name__ == '__main__':
     choices = load_choices()
     query_pairs = load_evaluation_queries()
 
-    t1, t2, t3, f, t = evaluate(naive_partial_match, query_pairs, choices, reverse_map=map_)
-    print(f"Naive Partial Match: t1={t1} t2={t2} t3={t3} f={f} t={t:.2f}")
-    t1, t2, t3, f, t = evaluate(naive_levenshtein_distance, query_pairs, choices, reverse_map=map_)
-    print(f"Naive Levenshtein: t1={t1} t2={t2} t3={t3} f={f} t={t:.2f}")
+    t1, t2, t3, f, t, t10 = evaluate(naive_partial_match, query_pairs, choices, reverse_map=map_)
+    print(f"Naive Partial Match: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
+    t1, t2, t3, f, t, t10 = evaluate(naive_levenshtein_distance, query_pairs, choices, reverse_map=map_)
+    print(f"Naive Levenshtein: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
     for model_name, model in models.items():
-        t1, t2, t3, f, t = evaluate(pure_model, query_pairs, choices, model=model, reverse_map=map_,
+        t1, t2, t3, f, t, t10 = evaluate(pure_model, query_pairs, choices, model=model, reverse_map=map_,
                                     model_name=model_name,
                                     magic_string=MAGIC_1 if model_name.startswith('magic1') else MAGIC_2)
-        print(f"{model_name} Pure: t1={t1} t2={t2} t3={t3} f={f} t={t:.2f}")
+        print(f"{model_name} Pure: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
     if last_model:
-        t1, t2, t3, f, t = evaluate(mixed_model, query_pairs, choices, model=last_model, reverse_map=map_,
+        t1, t2, t3, f, t, t10 = evaluate(mixed_model, query_pairs, choices, model=last_model, reverse_map=map_,
                                     model_name=last_model_name,
                                     magic_string=MAGIC_1 if last_model_name.startswith('magic1') else MAGIC_2)
-        print(f"Mixed Model: t1={t1} t2={t2} t3={t3} f={f} t={t:.2f}")
+        print(f"Mixed Model: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
