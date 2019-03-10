@@ -37,7 +37,7 @@ model.compile(optimizer=keras.optimizers.Adam(lr=0.001),
 
 model.summary()
 
-model.fit(x=train_queries, y=train_labels, epochs=15, validation_split=0.05, shuffle=True,
+model.fit(x=train_queries, y=train_labels, epochs=25, validation_split=0.05, shuffle=True,
           callbacks=[
               keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=32, write_graph=True,
                                           write_grads=True, write_images=True, embeddings_freq=0,

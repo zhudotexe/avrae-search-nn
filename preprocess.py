@@ -101,6 +101,17 @@ def clean_dupes(data):
     return queries
 
 
+def dump_evaluation(cleaned, filename):
+    print("Writing evaluation file...")
+    out = []
+    for query, results in cleaned.items():
+        for result in results.keys():
+            out.append({'query': query, 'result': result})
+    with open(f'preprocessing/evaluation-{filename}', 'w') as f:
+        json.dump(out, f)
+    print("Done writing evaluation.")
+
+
 def dump_training(cleaned, filename, num_results):
     print("Formatting for training...")
     out1 = []
@@ -118,7 +129,7 @@ def dump_training(cleaned, filename, num_results):
     print("Done formatting.")
 
 
-def dump_training_2(data, filename, num_results):
+def dump_training_2(data, filename):
     print("Formatting for naive training...")
     out = []
     for entry in data:
@@ -157,8 +168,9 @@ if __name__ == '__main__':
     ensure_at_least_1(data, reverse_map)
     clean_queries(data)
     cleaned = clean_dupes(data)
+    dump_evaluation(cleaned, filename)
     dump_training(cleaned, filename, len(map_))
-    dump_training_2(data, filename, len(map_))
+    dump_training_2(data, filename)
 
     endtime = time.time()
     print(f"Done! Took {endtime-starttime:.3f} seconds.")
