@@ -116,16 +116,20 @@ def dump_training(cleaned, filename, num_results):
     print("Formatting for training...")
     out1 = []
     out2 = []
+    out_embedding = []
     for query, results in cleaned.items():
         tokenized = tokenize(query, MAGIC_1)
         tokenized2 = tokenize(query, MAGIC_2)
         result_vec = generate_y_vector(results, num_results)
         out1.append({'x': tokenized, 'y': result_vec})
         out2.append({'x': tokenized2, 'y': result_vec})
+        out_embedding.append({'x': tokenize(query, MAGIC_1, True), 'y': result_vec})
     with open(f'training/1-{filename}', 'w') as f:
         json.dump(out1, f)
     with open(f'training/2-{filename}', 'w') as f:
         json.dump(out2, f)
+    with open(f'training/embedding-{filename}', 'w') as f:
+        json.dump(out_embedding, f)
     print("Done formatting.")
 
 
@@ -141,11 +145,16 @@ def dump_training_2(data, filename):
     print("Done formatting.")
 
 
-def tokenize(query, magic_string):
+def tokenize(query, magic_string, use_index=False):
     num_chars = len(magic_string)
-    tokenized = [0.] * INPUT_LENGTH
-    for i, char in enumerate(query):
-        tokenized[i] = (magic_string.index(char) + 1) / num_chars
+    if not use_index:
+        tokenized = [0.] * INPUT_LENGTH
+        for i, char in enumerate(query):
+            tokenized[i] = (magic_string.index(char) + 1) / num_chars
+    else:
+        tokenized = [0] * INPUT_LENGTH
+        for i, char in enumerate(query):
+            tokenized[i] = magic_string.index(char) + 1
     return tokenized
 
 

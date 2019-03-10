@@ -63,7 +63,7 @@ def pure_model(choices, query, model, magic_string, model_name):
     query = clean(query)
     query = tokenize(query, magic_string)
     query = np.expand_dims(query, 0)
-    if 'conv' in model_name:
+    if 'conv' in model_name and 'embedding' not in model_name:
         query = np.expand_dims(query, 2)
 
     prediction = model.predict(query)
