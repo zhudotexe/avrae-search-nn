@@ -1,3 +1,24 @@
+"""
+Results
+naive_partial: t1=3326,t2=456,t3=187,t10=323,f=12635,t=5.05
+levenshtein: t1=10788 t2=1464 t3=927 t10=1150 f=2598 t=73.93
+
+magic1_dense Pure: t1=9621,t2=1600,t3=730,t10=1657,f=3319,t=17.03
+    Magic1 -> Dense 128 -> Dense 501
+
+magic2_conv_smaller Pure: t1=10777,t2=1096,t3=513,t10=1265,f=3276,t=38.46
+    Magic2 -> Conv1D 25, 2 -> MaxPool -> Dense 501
+magic2_conv_smaller Mixed: t1=11369,t2=1547,t3=699,t10=1553,f=1759,t=143.3
+
+magic1_embedding_conv Pure: t1=13852 t2=944 t3=335 t10=686 f=1110 t=39.88
+    Embedding 29x16 -> Dropout 0.2 -> Conv1D 25, 3 -> AvgPool -> Dropout 0.2 -> Dense 501
+magic1_embedding_conv Mixed: t1=13821 t2=809 t3=390 t10=1125 f=782 t=149.48
+
+magic1_embedding_conv_smaller Pure: t1=12979 t2=1172 t3=470 t10=976 f=1330 t=39.28
+    Embedding 29x16 -> Dropout 0.2 -> Conv1D 75, 3 -> GlobAvgPool -> Dropout 0.2 -> Dense 501
+magic1_embedding_conv_smaller Mixed: t1=12814 t2=961 t3=495 t10=1546 f=1111 t=163.57
+"""
+
 import json
 import sys
 import time
