@@ -68,7 +68,7 @@ def naive_levenshtein_distance(choices, query):
 
 def pure_model(choices, query, model, magic_string, model_name, return_weights=False):
     query = clean(query)
-    query = tokenize(query, magic_string)
+    query = tokenize(query, magic_string, 'embedding' in model_name)
     query = np.expand_dims(query, 0)
     if 'conv' in model_name and 'embedding' not in model_name:
         query = np.expand_dims(query, 2)
@@ -91,9 +91,9 @@ def mixed_model(choices, query, model, magic_string, model_name, return_weights=
 
     # net
     query = clean(query)
-    query = tokenize(query, magic_string)
+    query = tokenize(query, magic_string, 'embedding' in model_name)
     query = np.expand_dims(query, 0)
-    if 'conv' in model_name:
+    if 'conv' in model_name and 'embedding' not in model_name:
         query = np.expand_dims(query, 2)
 
     prediction = model.predict(query)
@@ -202,10 +202,11 @@ if __name__ == '__main__':
     if 'interactive' in sys.argv:
         interactive_search(choices, models, map_, last_model, last_model_name)
     else:
-        t1, t2, t3, f, t, t10 = evaluate(naive_partial_match, query_pairs, choices, reverse_map=map_)
-        print(f"Naive Partial Match: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
-        t1, t2, t3, f, t, t10 = evaluate(naive_levenshtein_distance, query_pairs, choices, reverse_map=map_)
-        print(f"Naive Levenshtein: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
+        if 'nobaseline' not in sys.argv:
+            t1, t2, t3, f, t, t10 = evaluate(naive_partial_match, query_pairs, choices, reverse_map=map_)
+            print(f"Naive Partial Match: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
+            t1, t2, t3, f, t, t10 = evaluate(naive_levenshtein_distance, query_pairs, choices, reverse_map=map_)
+            print(f"Naive Levenshtein: t1={t1} t2={t2} t3={t3} t10={t10} f={f} t={t:.2f}")
         for model_name, model in models.items():
             t1, t2, t3, f, t, t10 = evaluate(pure_model, query_pairs, choices, model=model, reverse_map=map_,
                                              model_name=model_name,

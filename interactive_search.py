@@ -3,7 +3,7 @@ import json
 import numpy as np
 import tensorflow as tf
 
-from preprocess import MAGIC_2, clean, tokenize
+from preprocess import clean, tokenize, MAGIC_1, MAGIC_2
 
 modelname = input("Model: ")
 model = tf.keras.models.load_model(f'models/{modelname}.h5')
@@ -14,11 +14,11 @@ with open('preprocessing/map-mar2019_861k_spell.json') as f:
     map_ = json.load(f)
 
 
-def get_predictions(query):
+def get_predictions(query, model_name, magic_string):
     query = clean(query)
-    query = tokenize(query, MAGIC_2)
+    query = tokenize(query, magic_string, 'embedding' in model_name)
     query = np.expand_dims(query, 0)
-    if 'conv' in modelname:
+    if 'conv' in model_name and 'embedding' not in model_name:
         query = np.expand_dims(query, 2)
 
     prediction = model.predict(query)
@@ -34,4 +34,4 @@ def get_predictions(query):
 if __name__ == '__main__':
     while True:
         query = input("Query: ").strip()
-        get_predictions(query)
+        get_predictions(query, modelname, MAGIC_1 if modelname.startswith('magic1') else MAGIC_2)
