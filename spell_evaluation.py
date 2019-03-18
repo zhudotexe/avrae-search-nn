@@ -144,7 +144,7 @@ def evaluate(search, query_pairs, choices, model=None, reverse_map=None, magic_s
     top_2 = 0
     top_3 = 0
     top_10 = 0
-    fail = 0
+    failed = []
 
     for query, expected_result in query_pairs:
         expected_result_name = reverse_map[expected_result]
@@ -162,10 +162,14 @@ def evaluate(search, query_pairs, choices, model=None, reverse_map=None, magic_s
         elif len(top_5) > 2 and expected_result_name in top_5[:10]:
             top_10 += 1
         else:
-            fail += 1
+            failed.append({"query": query, "expected": expected_result_name})
     end = time.time()
 
-    return top_1, top_2, top_3, fail, end - start, top_10
+    if model_name:
+        with open(f'stats/failed-{model_name}-eval.json', 'w') as f:
+            json.dump(failed, f, indent=2)
+
+    return top_1, top_2, top_3, len(failed), end - start, top_10
 
 
 def interactive_search(choices, models, map_, last_model, last_model_name):
