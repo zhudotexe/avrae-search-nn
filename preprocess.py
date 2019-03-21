@@ -41,6 +41,7 @@ def map_data(queries, filename):
     typename = filename.split('_')[-1]
     with open(f"res/{typename}") as f:
         result_objs = json.load(f)
+    srd_result_objs = [o for o in result_objs if o.get('srd')]
 
     # generate map
     print("Generating map...")
@@ -55,11 +56,25 @@ def map_data(queries, filename):
     with open(f"preprocessing/map-{filename}", 'w') as f:
         json.dump(mapped, f, indent=2)
 
+    # and SRD
+    srd_mapped = {}
+    srd_reverse_map = {}
+    for i, entry in enumerate(srd_result_objs):
+        srd_mapped[i] = entry['name']
+        srd_reverse_map[entry['name']] = i
+
+    # dump map
+    print("Dumping SRD map...")
+    with open(f"preprocessing/map-srd-{filename}", 'w') as f:
+        json.dump(srd_mapped, f, indent=2)
+
     # map training
     print("Mapping queries...")
 
     for entry in queries:
-        entry['result'] = reverse_map[entry['result']]
+        res = entry['result']
+        entry['result'] = reverse_map[res]
+        entry['srd_result'] = srd_reverse_map.get(res)
 
     print("Done mapping.")
     return mapped, reverse_map
@@ -83,7 +98,7 @@ def clean(query):
     return filtered[:INPUT_LENGTH].strip()
 
 
-def clean_dupes(data):
+def clean_dupes(data, srd=False):
     """
     Cleans up a long list of queries into what each query returned.
     output:
@@ -91,11 +106,16 @@ def clean_dupes(data):
         "[query]": {counter of results (int: int)}
     }
     """
-    print("Cleaning up duplicates...")
+    print(f"Cleaning up duplicates (srd={srd})...")
     queries = collections.defaultdict(lambda: collections.Counter())
     for entry in data:
         query = entry['query']
-        result = entry['result']
+        if not srd:
+            result = entry['result']
+        else:
+            result = entry['srd_result']
+            if result is None:
+                continue
         queries[query][result] += 1
     print(f"Cleaned {len(data)} entries into {len(queries)}.")
     return queries
@@ -145,6 +165,19 @@ def dump_training_2(data, filename):
     print("Done formatting.")
 
 
+def dump_srd(cleaned, filename):
+    print("Formatting for srd training...")
+    with open(f"preprocessing/map-srd-{filename}", 'r') as f:
+        srd_map = json.load(f)
+    out = []
+    for query, results in cleaned.items():
+        result_vec = generate_y_vector(results, len(srd_map))
+        out.append({'x': tokenize(query, MAGIC_1, True), 'y': result_vec})
+    with open(f'training/embedding-srd-{filename}', 'w') as f:
+        json.dump(out, f)
+    print("Done formatting.")
+
+
 def tokenize(query, magic_string, use_index=False):
     num_chars = len(magic_string)
     if not use_index:
@@ -174,12 +207,15 @@ if __name__ == '__main__':
     starttime = time.time()
     data = load_type_query_file(filename)
     map_, reverse_map = map_data(data, filename)
-    ensure_at_least_1(data, reverse_map)
+    # ensure_at_least_1(data, reverse_map)
     clean_queries(data)
     cleaned = clean_dupes(data)
+    srd_cleaned = clean_dupes(data, True)
     dump_evaluation(cleaned, filename)
+    dump_evaluation(srd_cleaned, f"srd-{filename}")
     dump_training(cleaned, filename, len(map_))
     dump_training_2(data, filename)
+    dump_srd(srd_cleaned, filename)
 
     endtime = time.time()
     print(f"Done! Took {endtime-starttime:.3f} seconds.")

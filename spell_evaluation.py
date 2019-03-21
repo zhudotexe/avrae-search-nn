@@ -30,6 +30,8 @@ from tabulate import tabulate
 
 from preprocess import MAGIC_1, MAGIC_2, clean, tokenize
 
+SRD = 'srd' in sys.argv
+
 
 def load_model(name):
     model = tf.keras.models.load_model(f'models/{name}.h5')
@@ -40,7 +42,10 @@ def load_map():
     """
     Map: index -> spell name
     """
-    with open('preprocessing/map-mar2019_861k_spell.json') as f:
+    model_name = "mar2019_861k_spell"
+    if SRD:
+        model_name = f"srd-{model_name}"
+    with open(f'preprocessing/map-{model_name}.json') as f:
         map_ = json.load(f)
     map_ = {int(k): v for k, v in map_.items()}
     reverse_map = {v: k for k, v in map_.items()}
@@ -50,11 +55,16 @@ def load_map():
 def load_choices():
     with open('res/spell.json') as f:
         data = json.load(f)
+    if SRD:
+        data = [d for d in data if d['srd']]
     return data
 
 
 def load_evaluation_queries():
-    with open('preprocessing/evaluation-mar2019_861k_spell.json') as f:
+    model_name = "mar2019_861k_spell"
+    if SRD:
+        model_name = f"srd-{model_name}"
+    with open(f'preprocessing/evaluation-{model_name}.json') as f:
         data = json.load(f)
     data = [(e['query'], e['result']) for e in data]
     return data
